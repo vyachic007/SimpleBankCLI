@@ -1,0 +1,42 @@
+plugins {
+    id 'java'
+}
+
+group = 'by.slavaborisov'
+version = '1.0-SNAPSHOT'
+
+java {
+    toolchain {
+        languageVersion = JavaLanguageVersion.of(17)
+    }
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation project(':database')
+
+    compileOnly 'org.projectlombok:lombok:1.18.38'
+    annotationProcessor 'org.projectlombok:lombok:1.18.38'
+
+    implementation 'org.springframework:spring-context:6.2.7'
+    implementation 'org.springframework:spring-orm:6.1.0'
+
+    implementation 'org.hibernate:hibernate-core:7.0.10.Final'
+
+    runtimeOnly 'org.postgresql:postgresql:42.7.3'
+
+    implementation 'org.apache.logging.log4j:log4j-core:2.23.1'
+    implementation 'org.apache.logging.log4j:log4j-slf4j-impl:2.23.1'
+    implementation 'org.apache.logging.log4j:log4j-api:2.23.1'
+
+    testImplementation platform('org.junit:junit-bom:5.10.0')
+    testImplementation 'org.junit.jupiter:junit-jupiter'
+    testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+}
+
+test {
+    useJUnitPlatform()
+}
